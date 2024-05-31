@@ -7,6 +7,7 @@ void main() {
   runApp(MyApp());
 }
 
+/// The main application widget.
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// The widget for CNPJ consultation.
 class CNPJConsulta extends StatefulWidget {
   @override
   _CNPJConsultaState createState() => _CNPJConsultaState();
@@ -36,10 +38,12 @@ class _CNPJConsultaState extends State<CNPJConsulta> {
     _dadosCNPJ = null;
   }
 
+  /// Removes formatting from the CNPJ string.
   String _removeFormatting(String cnpj) {
     return cnpj.replaceAll(RegExp(r'\D'), '');
   }
 
+  /// Consults the CNPJ using the provided CNPJ string.
   Future<void> _consultarCNPJ(String cnpj) async {
     final formattedCNPJ = _removeFormatting(cnpj);
     final response = await http
@@ -91,6 +95,7 @@ class _CNPJConsultaState extends State<CNPJConsulta> {
     );
   }
 
+  /// Builds the widget to display the CNPJ data.
   Widget _buildDadosCNPJ() {
     return Expanded(
       child: ListView(
